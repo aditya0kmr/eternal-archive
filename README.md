@@ -100,6 +100,51 @@ A personalized 3D romantic digital archive with tactile mechanisms and immersive
 
 ---
 
+## 🚀 Phase 3.1: Aethel Engine v1 - React/Vite/R3F Foundation (🟡 IN PROGRESS)
+
+**Status**: Building core engine framework with React + Three.js integration
+
+### Architecture Implemented:
+- ✅ Vite build system with React 18 & JSX support
+- ✅ React Three Fiber (R3F) for 3D rendering
+- ✅ Drei library for enhanced 3D utilities  
+- ✅ Zustand store for global engine state management
+- ✅ Public folder structure for GitHub Pages
+- ✅ Modular component architecture
+
+### Core Components (v1 Stubs):
+1. **ChronometricKey** - 3D gear mechanism with click-to-unlock
+   - Mock unlock with Aadi/Nanniii users
+   - Rotating wireframe gears
+   - Click detection for user selection
+
+2. **ControlConsole** - Main navigation hub
+   - Cylindrical platform with glow effect
+   - Placeholder for mechanism levers
+   - Camera navigation system
+
+### Engine State Store:
+- `loggedInUser`: Auth state (Aadi/Nanniii)
+- `currentMechanism`: Navigation state
+- `moodSummary`: Future mood aggregation
+- `letters`: Stored love letters
+
+### Next: Local Build & Deploy
+```bash
+npm install
+npm run build
+# Deploy dist/ to GitHub Pages
+```
+
+**v1 Roadmap**:
+- [ ] Implement 3 interactive gears in Chronometric Key
+- [ ] Add user selection modal
+- [ ] Create Temporal Loom (2-3 milestones)
+- [ ] Create Memory Press (3-6 photos)
+- [ ] Create Dual Coil Capacitor (Firestore letters)
+- [ ] Setup Firebase Auth & Firestore
+- [ ] GitHub Actions CI/CD pipeline
+
 **Built with**: HTML5, CSS3, JavaScript ES6, Three.js r128, GitHub Pages
 **Status**: 🚀 Live & Continuously Deployed
 **Last Updated**: December 17, 2025 12:15 AM IST
