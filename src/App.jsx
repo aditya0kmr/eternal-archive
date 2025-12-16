@@ -12,8 +12,8 @@ function SimpleScene() {
       
       {/* Main Gear */}
       <mesh position={[0, 0, 0]} rotation={[0.4, 0.3, 0]}>
-<boxGeometry args={[4, 4, 4]} />        <meshStandardMaterial color="#ff69b4" metalness={0.8} roughness={0.2} />
-      </mesh>
+        <boxGeometry args={[4, 4, 4]} />
+                <meshStandardMaterial color="#ff69b4" metalness={0.8} roughness={0.2} />
       
       {/* Decorative spheres */}
       <mesh position={[-4, 2, 0]}>
