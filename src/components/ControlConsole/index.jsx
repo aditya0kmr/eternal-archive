@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { useRef, useState } from 'react';
+import { useFrame } from '@react-three/fiber';
 import { OrbitControls, Text } from '@react-three/drei';
 import useEngineStore from '../../store/engineStore';
 
@@ -32,7 +32,6 @@ const Lever = ({ position, label, onSelect, color, isActive }) => {
           roughness={0.2}
         />
       </mesh>
-
       {/* Label */}
       <Text position={[0, -1.5, 0]} fontSize={0.5} color="#ffffff">
         {label}
@@ -54,7 +53,6 @@ const ConsolePlatform = () => {
           roughness={0.3}
         />
       </mesh>
-
       {/* Ambient Light */}
       <ambientLight intensity={0.6} />
       <pointLight position={[10, 20, 10]} intensity={1} color="#ff69b4" />
@@ -63,17 +61,17 @@ const ConsolePlatform = () => {
   );
 };
 
-// Main Console Scene
-const ConsoleScene = () => {
+// Main Console Scene - Now returns just the 3D content, not a full component
+const ControlConsole = () => {
   const setCurrentMechanism = useEngineStore((state) => state.setCurrentMechanism);
   const [activeLever, setActiveLever] = useState(null);
 
   const mechanisms = [
-    { label: 'TEMPORAL LOOM', position: [-8, 0, 0], color: '#ff69b4' },
-    { label: 'MEMORY PRESS', position: [0, 0, 0], color: '#ff1493' },
-    { label: 'DUAL COIL', position: [8, 0, 0], color: '#ffb6c1' },
-    { label: 'PNEUMATIC TUBES', position: [-4, 0, -8], color: '#ff69b4' },
-    { label: 'BINDING CHAIN', position: [4, 0, -8], color: '#ff1493' },
+    { label: 'TEMPORAL\nLOOM', position: [-8, 0, 0], color: '#ff69b4' },
+    { label: 'MEMORY\nPRESS', position: [0, 0, 0], color: '#ff1493' },
+    { label: 'DUAL\nCOIL', position: [8, 0, 0], color: '#ffb6c1' },
+    { label: 'PNEUMATIC\nTUBES', position: [-4, 0, -8], color: '#ff69b4' },
+    { label: 'BINDING\nCHAIN', position: [4, 0, -8], color: '#ff1493' },
   ];
 
   const handleLeverSelect = (mechanismName) => {
@@ -84,7 +82,6 @@ const ConsoleScene = () => {
   return (
     <>
       <ConsolePlatform />
-      
       {mechanisms.map((mech, i) => (
         <Lever
           key={i}
@@ -95,33 +92,13 @@ const ConsoleScene = () => {
           isActive={activeLever === mech.label}
         />
       ))}
-
       <OrbitControls autoRotate autoRotateSpeed={1} />
+      {/* UI Overlay Text */}
+      <Text position={[0, 20, 0]} fontSize={2} color="#ff69b4" textAlign="center">
+        CONTROL CONSOLE
+      </Text>
     </>
   );
 };
 
-export default function ControlConsole() {
-  return (
-    <div style={{ width: '100%', height: '100vh' }}>
-      <Canvas camera={{ position: [0, 10, 30], fov: 75 }}>
-        <color attach="background" args={['#0a0e27']} />
-        <ConsoleScene />
-      </Canvas>
-      
-      <div style={{
-        position: 'absolute',
-        top: '30px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        color: 'white',
-        textAlign: 'center',
-        textShadow: '0 0 20px #ff69b4',
-        pointerEvents: 'none',
-      }}>
-        <h1 style={{ fontSize: '2.5em', margin: 0 }}>CONTROL CONSOLE</h1>
-        <p style={{ fontSize: '1.1em' }}>Select a mechanism to explore</p>
-      </div>
-    </div>
-  );
-}
+export default ControlConsole;
