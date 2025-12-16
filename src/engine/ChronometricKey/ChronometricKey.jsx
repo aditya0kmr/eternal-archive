@@ -1,5 +1,5 @@
 import { Mesh } from 'three'
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import useEngineStore from '../../store/engineStore'
 
@@ -20,12 +20,16 @@ function ChronometricKey() {
   }
 
   return (
-    <group onClick={handleClick}>
-      <mesh ref={meshRef}>
-        <boxGeometry args={[10, 10, 10]} />
-        <meshStandardMaterial color="#ff69b4" wireframe />
-      </mesh>
-    </group>
+    <>
+      <pointLight position={[10, 10, 10]} intensity={1} />
+      <ambientLight intensity={0.6} />
+      <group onClick={handleClick}>
+        <mesh ref={meshRef}>
+          <boxGeometry args={[15, 15, 15]} />
+          <meshStandardMaterial color="#ff69b4" metalness={0.6} roughness={0.4} />
+        </mesh>
+      </group>
+    </>
   )
 }
 
