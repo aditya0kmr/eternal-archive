@@ -36,7 +36,7 @@ function SimpleScene() {
 function App() {
   return (
     <div style={{ width: '100%', height: '100vh', background: '#0a0e27' }}>
-      <Canvas camera={{ position: [0, 0, 12], fov: 75 }} gl={{ antialias: true }}>
+      <Canvas camera={{ position: [0, 0, 12], fov: 75 }} gl={{ antialias: true } frameloop="always" }}
         <Suspense fallback={null}>
           <SimpleScene />
         </Suspense>
