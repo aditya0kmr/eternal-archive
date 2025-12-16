@@ -29,7 +29,7 @@ function SimpleScene() {
 {/* Text components removed - Three.js Text requires font prop with URL. TODO: Add font loading and re-enable text elements */}      
       
       <OrbitControls autoRotate autoRotateSpeed={2} />
-    </>
+              </>
   )
 }
 
