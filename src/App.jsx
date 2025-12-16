@@ -5,14 +5,14 @@ import { Suspense } from 'react'
 
 function SimpleScene() {
   return (
+    
     <>
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
       
       {/* Main Gear */}
       <mesh position={[0, 0, 0]} rotation={[0.4, 0.3, 0]}>
-        <torusGeometry args={[3, 0.8, 16, 100]} />
-        <meshStandardMaterial color="#ff69b4" metalness={0.8} roughness={0.2} />
+<boxGeometry args={[4, 4, 4]} />        <meshStandardMaterial color="#ff69b4" metalness={0.8} roughness={0.2} />
       </mesh>
       
       {/* Decorative spheres */}
