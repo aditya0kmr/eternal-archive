@@ -26,15 +26,7 @@ function SimpleScene() {
         <meshStandardMaterial color="#ffb6c1" />
       </mesh>
       
-      {/* Title */}
-      <Text position={[0, 5, 0]} fontSize={1.2} color="#ff69b4" textAlign="center">
-        ETERNAL ARCHIVE
-      </Text>
-      
-      {/* Interactive text */}
-      <Text position={[0, -4, 0]} fontSize={0.6} color="#ffb6c1" textAlign="center">
-        Click to Enter
-      </Text>
+{/* Text components removed - Three.js Text requires font prop with URL. TODO: Add font loading and re-enable text elements */}      
       
       <OrbitControls autoRotate autoRotateSpeed={2} />
     </>
