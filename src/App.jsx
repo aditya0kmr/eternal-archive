@@ -2,7 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
 import useEngineStore from './store/engineStore'
 import ChronometricKey from './engine/ChronometricKey/ChronometricKey'
-import ControlConsole from './engine/ControlConsole/ControlConsole'
+import ControlConsole from './components/ControlConsole'
 import './App.css'
 
 function App() {
