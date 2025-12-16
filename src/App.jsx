@@ -1,102 +1,55 @@
 import React from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Suspense, useState } from 'react'
-import useEngineStore from './store/engineStore'
-import ChronometricKey from './engine/ChronometricKey/ChronometricKey'
-import ControlConsole from './components/ControlConsole'
-import './App.css'
+import { OrbitControls, Text } from '@react-three/drei'
+import { Suspense } from 'react'
 
-// Error Boundary Component
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { hasError: false, error: null }
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true, error }
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error('3D Render Error:', error, errorInfo)
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          background: '#0a0e27',
-          color: '#ff69b4',
-          fontFamily: 'monospace'
-        }}>
-          <h1>⚠️ Scene Error</h1>
-          <p>{this.state.error?.message}</p>
-          <button onClick={() => window.location.reload()}>Reload</button>
-        </div>
-      )
-    }
-    return this.props.children
-  }
-}
-
-function LoadingFallback() {
+function SimpleScene() {
   return (
-    <div style={{
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      background: '#0a0e27',
-      color: '#ff69b4',
-      fontSize: '24px',
-      fontFamily: 'monospace'
-    }}>
-      <div style={{ textAlign: 'center' }}>
-        <div style={{ animation: 'spin 2s infinite' }}>◆ ◇ ◆</div>
-        <p>Initializing Aethel Engine...</p>
-      </div>
-    </div>
+    <>
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} />
+      
+      {/* Main Gear */}
+      <mesh position={[0, 0, 0]} rotation={[0.4, 0.3, 0]}>
+        <torusGeometry args={[3, 0.8, 16, 100]} />
+        <meshStandardMaterial color="#ff69b4" metalness={0.8} roughness={0.2} />
+      </mesh>
+      
+      {/* Decorative spheres */}
+      <mesh position={[-4, 2, 0]}>
+        <sphereGeometry args={[0.8, 32, 32]} />
+        <meshStandardMaterial color="#ff1493" />
+      </mesh>
+      
+      <mesh position={[4, 2, 0]}>
+        <sphereGeometry args={[0.8, 32, 32]} />
+        <meshStandardMaterial color="#ffb6c1" />
+      </mesh>
+      
+      {/* Title */}
+      <Text position={[0, 5, 0]} fontSize={1.2} color="#ff69b4" textAlign="center">
+        ETERNAL ARCHIVE
+      </Text>
+      
+      {/* Interactive text */}
+      <Text position={[0, -4, 0]} fontSize={0.6} color="#ffb6c1" textAlign="center">
+        Click to Enter
+      </Text>
+      
+      <OrbitControls autoRotate autoRotateSpeed={2} />
+    </>
   )
 }
 
 function App() {
-  const currentMechanism = useEngineStore((state) => state.currentMechanism)
-  const loggedInUser = useEngineStore((state) => state.loggedInUser)
-  const [isLoading, setIsLoading] = useState(false)
-
-  // Render different scene based on logged-in state and mechanism
-  const renderScene = () => {
-    if (!loggedInUser) {
-      return <ChronometricKey onLoadComplete={() => setIsLoading(false)} />
-    }
-    return <ControlConsole />
-  }
-
   return (
-    <ErrorBoundary>
-      <div className="app-container">
-        <Canvas
-          camera={{ position: [0, 0, 50], fov: 75 }}
-          style={{ width: '100%', height: '100%' }}
-          gl={{ antialias: true, alpha: true }}
-          onCreated={() => setIsLoading(false)}
-        >
-          <color attach="background" args={['#0a0e27']} />
-          <ambientLight intensity={0.6} />
-          <Suspense fallback={null}>
-            {renderScene()}
-          </Suspense>
-        </Canvas>
-        {isLoading && <LoadingFallback />}
-      </div>
-    </ErrorBoundary>
+    <div style={{ width: '100%', height: '100vh', background: '#0a0e27' }}>
+      <Canvas camera={{ position: [0, 0, 12], fov: 75 }} gl={{ antialias: true }}>
+        <Suspense fallback={null}>
+          <SimpleScene />
+        </Suspense>
+      </Canvas>
+    </div>
   )
 }
 
