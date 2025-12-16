@@ -1,0 +1,1 @@
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:Courier New,monospace;background:#0a0e27;color:#e0e0e0;overflow:hidden;width:100vw;height:100vh}html,body,#root{width:100%;height:100%}canvas{display:block}@keyframes fadeIn{0%{opacity:0}to{opacity:1}}@keyframes slideIn{0%{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
