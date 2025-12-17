@@ -8,7 +8,7 @@ const App = () => {
     if (!containerRef.current) return
 
     try {
-      // Scene
+      // Scene setup
       const scene = new THREE.Scene()
       scene.background = new THREE.Color(0x0a0e27)
 
@@ -24,7 +24,7 @@ const App = () => {
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
       containerRef.current.appendChild(renderer.domElement)
 
-      // Lights
+      // Lighting
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.7)
       scene.add(ambientLight)
 
@@ -59,7 +59,7 @@ const App = () => {
       platform.position.y = -2
       scene.add(platform)
 
-      // Animation
+      // Animation loop
       const animate = () => {
         requestAnimationFrame(animate)
 
@@ -68,7 +68,7 @@ const App = () => {
         sphere1.rotation.y += 0.005
         sphere2.rotation.y -= 0.005
 
-        // Camera orbit
+        // Camera orbital movement
         const time = Date.now() * 0.0001
         camera.position.x = Math.sin(time) * 8.5
         camera.position.z = Math.cos(time) * 8.5
@@ -78,7 +78,7 @@ const App = () => {
       }
       animate()
 
-      // Resize handler
+      // Window resize handler
       const handleResize = () => {
         const w = window.innerWidth
         const h = window.innerHeight
@@ -88,7 +88,7 @@ const App = () => {
       }
       window.addEventListener('resize', handleResize)
 
-      // Cleanup
+      // Cleanup function
       return () => {
         window.removeEventListener('resize', handleResize)
         containerRef.current?.removeChild(renderer.domElement)
@@ -107,7 +107,7 @@ const App = () => {
         height: '100vh',
         margin: 0,
         padding: 0,
-        overflow: 'hidden'
+        overflow: 'hidden',
       }}
     />
   )
