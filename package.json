@@ -1,7 +1,7 @@
 {
   "name": "eternal-archive",
-  "version": "1.0.0",
-  "description": "Aethel Engine Phase 3.1: Control Console with Navigation System",
+  "version": "3.0.0",
+  "description": "Aethel Engine Phase 3 - Full 3D Romantic Digital Archive with Three.js and React",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,9 +12,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-"three": "^0.157.0",    "@react-three/fiber": "^8.13.0",
-    "@react-three/drei": "^9.86.0",
-    "firebase": "^10.7.0",
+    "three": "^r157",
     "zustand": "^4.4.0"
   },
   "devDependencies": {
