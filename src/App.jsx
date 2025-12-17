@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import * as THREE from 'three'
-import './App.css'
 
 /**
  * AETHEL ENGINE - Phase 3: Complete Rendering System
